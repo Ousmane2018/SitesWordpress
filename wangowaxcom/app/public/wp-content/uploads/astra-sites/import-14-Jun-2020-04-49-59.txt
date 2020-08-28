@@ -1,0 +1,10 @@
+
+Complete 
+Batch Process Started..
+Starter Templates - Importing Images for Blog name 'wangowax.com' (1)
+---- Processing Images from Widgets -----
+---- Processing WordPress Posts / Pages - for "Gutenberg" ----
+---- Processing WordPress Page - for Gutenberg ---- "2"
+---- Processing WordPress Posts / Pages - for Elementor ----
+---- Processing MISC ----
+Batch Process Complete!

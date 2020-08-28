@@ -1,0 +1,12 @@
+
+Deleted customizer Settings {"theme-auto-version":"2.4.5","is_theme_queue_running":false,"_astra_pb_compatibility_completed":true}
+Complete 
+Batch Process Started..
+Starter Templates - Importing Images for Blog name 'wangowax.com' (1)
+Deleted - Site Options []
+---- Processing Images from Widgets -----
+---- Processing WordPress Posts / Pages - for "Gutenberg" ----
+---- Processing WordPress Page - for Gutenberg ---- "2"
+---- Processing WordPress Posts / Pages - for Elementor ----
+---- Processing MISC ----
+Batch Process Complete!
