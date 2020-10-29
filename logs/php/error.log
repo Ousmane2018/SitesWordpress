@@ -1,0 +1,142 @@
+[18-Aug-2020 02:59:57 UTC] WordPress database error Table 'wp_wc_order_stats' already exists for query 
+		CREATE TABLE wp_wc_order_stats (
+			order_id bigint(20) unsigned NOT NULL,
+			parent_id bigint(20) unsigned DEFAULT 0 NOT NULL,
+			date_created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			date_created_gmt datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			num_items_sold int(11) DEFAULT 0 NOT NULL,
+			total_sales double DEFAULT 0 NOT NULL,
+			tax_total double DEFAULT 0 NOT NULL,
+			shipping_total double DEFAULT 0 NOT NULL,
+			net_total double DEFAULT 0 NOT NULL,
+			returning_customer boolean DEFAULT NULL,
+			status varchar(200) NOT NULL,
+			customer_id BIGINT UNSIGNED NOT NULL,
+			PRIMARY KEY (order_id),
+			KEY date_created (date_created),
+			KEY customer_id (customer_id),
+			KEY status (status(191))
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 02:59:58 UTC] WordPress database error Table 'wp_wc_order_product_lookup' already exists for query 
+		CREATE TABLE wp_wc_order_product_lookup (
+			order_item_id BIGINT UNSIGNED NOT NULL,
+			order_id BIGINT UNSIGNED NOT NULL,
+			product_id BIGINT UNSIGNED NOT NULL,
+			variation_id BIGINT UNSIGNED NOT NULL,
+			customer_id BIGINT UNSIGNED NULL,
+			date_created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			product_qty INT NOT NULL,
+			product_net_revenue double DEFAULT 0 NOT NULL,
+			product_gross_revenue double DEFAULT 0 NOT NULL,
+			coupon_amount double DEFAULT 0 NOT NULL,
+			tax_amount double DEFAULT 0 NOT NULL,
+			shipping_amount double DEFAULT 0 NOT NULL,
+			shipping_tax_amount double DEFAULT 0 NOT NULL,
+			PRIMARY KEY  (order_item_id),
+			KEY order_id (order_id),
+			KEY product_id (product_id),
+			KEY customer_id (customer_id),
+			KEY date_created (date_created)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 02:59:59 UTC] WordPress database error Table 'wp_wc_order_tax_lookup' already exists for query 
+		CREATE TABLE wp_wc_order_tax_lookup (
+			order_id BIGINT UNSIGNED NOT NULL,
+			tax_rate_id BIGINT UNSIGNED NOT NULL,
+			date_created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			shipping_tax double DEFAULT 0 NOT NULL,
+			order_tax double DEFAULT 0 NOT NULL,
+			total_tax double DEFAULT 0 NOT NULL,
+			PRIMARY KEY (order_id, tax_rate_id),
+			KEY tax_rate_id (tax_rate_id),
+			KEY date_created (date_created)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 03:00:00 UTC] WordPress database error Table 'wp_wc_order_coupon_lookup' already exists for query 
+		CREATE TABLE wp_wc_order_coupon_lookup (
+			order_id BIGINT UNSIGNED NOT NULL,
+			coupon_id BIGINT UNSIGNED NOT NULL,
+			date_created datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+			discount_amount double DEFAULT 0 NOT NULL,
+			PRIMARY KEY (order_id, coupon_id),
+			KEY coupon_id (coupon_id),
+			KEY date_created (date_created)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 03:00:00 UTC] WordPress database error Table 'wp_wc_admin_notes' already exists for query 
+		CREATE TABLE wp_wc_admin_notes (
+			note_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			name varchar(255) NOT NULL,
+			type varchar(20) NOT NULL,
+			locale varchar(20) NOT NULL,
+			title longtext NOT NULL,
+			content longtext NOT NULL,
+			content_data longtext NULL default null,
+			status varchar(200) NOT NULL,
+			source varchar(200) NOT NULL,
+			date_created datetime NOT NULL default '0000-00-00 00:00:00',
+			date_reminder datetime NULL default null,
+			is_snoozable boolean DEFAULT 0 NOT NULL,
+			layout varchar(20) DEFAULT '' NOT NULL,
+			image varchar(200) NULL DEFAULT NULL,
+			is_deleted boolean DEFAULT 0 NOT NULL,
+			icon varchar(200) NOT NULL default 'info',
+			PRIMARY KEY (note_id)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 03:00:01 UTC] WordPress database error Table 'wp_wc_admin_note_actions' already exists for query 
+		CREATE TABLE wp_wc_admin_note_actions (
+			action_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			note_id BIGINT UNSIGNED NOT NULL,
+			name varchar(255) NOT NULL,
+			label varchar(255) NOT NULL,
+			query longtext NOT NULL,
+			status varchar(255) NOT NULL,
+			is_primary boolean DEFAULT 0 NOT NULL,
+			PRIMARY KEY (action_id),
+			KEY note_id (note_id)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 03:00:02 UTC] WordPress database error Table 'wp_wc_customer_lookup' already exists for query 
+		CREATE TABLE wp_wc_customer_lookup (
+			customer_id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+			user_id BIGINT UNSIGNED DEFAULT NULL,
+			username varchar(60) DEFAULT '' NOT NULL,
+			first_name varchar(255) NOT NULL,
+			last_name varchar(255) NOT NULL,
+			email varchar(100) NULL default NULL,
+			date_last_active timestamp NULL default null,
+			date_registered timestamp NULL default null,
+			country char(2) DEFAULT '' NOT NULL,
+			postcode varchar(20) DEFAULT '' NOT NULL,
+			city varchar(100) DEFAULT '' NOT NULL,
+			state varchar(100) DEFAULT '' NOT NULL,
+			PRIMARY KEY (customer_id),
+			UNIQUE KEY user_id (user_id),
+			KEY email (email)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 03:00:02 UTC] WordPress database error Table 'wp_wc_category_lookup' already exists for query 
+		CREATE TABLE wp_wc_category_lookup (
+			category_tree_id BIGINT UNSIGNED NOT NULL,
+			category_id BIGINT UNSIGNED NOT NULL,
+			PRIMARY KEY (category_tree_id,category_id)
+		) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\Install::check_version, Automattic\WooCommerce\Admin\Install::install, Automattic\WooCommerce\Admin\Install::create_tables, dbDelta
+[18-Aug-2020 03:34:56 UTC] Astra: Batch Process Started!
+[18-Aug-2020 03:34:56 UTC] Astra: Queuing 2.5.0 - astra_global_button_woo_css
+[18-Aug-2020 03:34:56 UTC] Astra: Queuing 2.5.0 - astra_gtn_full_wide_group_cover_css
+[18-Aug-2020 03:34:56 UTC] Astra: Queuing 2.5.2 - astra_footer_widget_bg
+[18-Aug-2020 03:34:59 UTC] Astra: db version updated successfully!
+[18-Aug-2020 03:34:59 UTC] Astra: Batch Process Completed!
+[20-Aug-2020 18:18:43 UTC] PHP Fatal error:  Uncaught Error: Call to a member function isGroup() on null in C:\Users\bigue\Local Sites\chassepeche\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Application\Frontend\Slider\ViewIframe.php:39
+Stack trace:
+#0 C:\Users\bigue\Local Sites\chassepeche\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Application\Frontend\Slider\ControllerPreRenderSlider.php(32): Nextend\SmartSlider3\Application\Frontend\Slider\ViewIframe->display()
+#1 [internal function]: Nextend\SmartSlider3\Application\Frontend\Slider\ControllerPreRenderSlider->actionIframe()
+#2 C:\Users\bigue\Local Sites\chassepeche\app\public\wp-content\plugins\smart-slider-3\Nextend\Framework\Controller\AbstractController.php(93): call_user_func_array(Array, Array)
+#3 C:\Users\bigue\Local Sites\chassepeche\app\public\wp-content\plugins\smart-slider-3\Nextend\Framework\Application\AbstractApplicationType.php(88): Nextend\Framework\Controller\AbstractController->doAction('iframe', Array)
+#4 C:\Users\bigue\Local Sites\chasse in C:\Users\bigue\Local Sites\chassepeche\app\public\wp-content\plugins\smart-slider-3\Nextend\SmartSlider3\Application\Frontend\Slider\ViewIframe.php on line 39
+[13-Sep-2020 16:38:01 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_wc_onboarding_product_data' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, WP_CLI::do_hook, WC_CLI_Runner::after_wp_load, do_action('rest_api_init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\API\Init->rest_api_init, Automattic\WooCommerce\Admin\API\OnboardingProfile->register_routes, Automattic\WooCommerce\Admin\API\OnboardingProfile->get_collection_params, Automattic\WooCommerce\Admin\API\OnboardingProfile::get_profile_properties, Automattic\WooCommerce\Admin\Features\Onboarding::get_allowed_product_types, Automattic\WooCommerce\Admin\Features\Onboarding::append_product_data, get_transient, delete_option
+[13-Sep-2020 16:38:02 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_wc_onboarding_product_data' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, WP_CLI::do_hook, WC_CLI_Runner::after_wp_load, do_action('rest_api_init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\API\Init->rest_api_init, Automattic\WooCommerce\Admin\API\OnboardingProfile->register_routes, Automattic\WooCommerce\Admin\API\OnboardingProfile->get_collection_params, Automattic\WooCommerce\Admin\API\OnboardingProfile::get_profile_properties, Automattic\WooCommerce\Admin\Features\Onboarding::get_allowed_product_types, Automattic\WooCommerce\Admin\Features\Onboarding::append_product_data, get_transient, delete_option
+[13-Sep-2020 21:28:37 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1' at line 1 for query 1 made by activate_plugin, do_action('activate_ap-mega-menu/ap-mega-menu.php'), WP_Hook->do_action, WP_Hook->apply_filters, APMM_Class->apmm_pro_activation, include('/plugins/ap-mega-menu/inc/backend/activation.php')
+[08-Oct-2020 11:52:14 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_wc_onboarding_product_data' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, WP_CLI::do_hook, WC_CLI_Runner::after_wp_load, do_action('rest_api_init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\API\Init->rest_api_init, Automattic\WooCommerce\Admin\API\OnboardingProfile->register_routes, Automattic\WooCommerce\Admin\API\OnboardingProfile->get_collection_params, Automattic\WooCommerce\Admin\API\OnboardingProfile::get_profile_properties, Automattic\WooCommerce\Admin\Features\Onboarding::get_allowed_product_types, Automattic\WooCommerce\Admin\Features\Onboarding::append_product_data, get_transient, delete_option
+[08-Oct-2020 11:52:14 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_timeout_wc_onboarding_product_data' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, WP_CLI::do_hook, WC_CLI_Runner::after_wp_load, do_action('rest_api_init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\API\Init->rest_api_init, Automattic\WooCommerce\Admin\API\OnboardingProfile->register_routes, Automattic\WooCommerce\Admin\API\OnboardingProfile->get_collection_params, Automattic\WooCommerce\Admin\API\OnboardingProfile::get_profile_properties, Automattic\WooCommerce\Admin\Features\Onboarding::get_allowed_product_types, Automattic\WooCommerce\Admin\Features\Onboarding::append_product_data, get_transient, delete_option
+[29-Oct-2020 00:22:27 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_external_ip_address_127.0.0.1' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, require('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, WooCommerce->init, wc_load_cart, WooCommerce->initialize_cart, WC_Customer->__construct, WC_Data_Store->read, WC_Customer_Data_Store_Session->read, WC_Customer_Data_Store_Session->set_defaults, wc_get_customer_default_location, WC_Geolocation::geolocate_ip, WC_Geolocation::get_external_ip_address, get_transient, delete_option
+[29-Oct-2020 00:22:27 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_external_ip_address_127.0.0.1' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, require('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, WooCommerce->init, wc_load_cart, WooCommerce->initialize_cart, WC_Customer->__construct, WC_Data_Store->read, WC_Customer_Data_Store_Session->read, WC_Customer_Data_Store_Session->set_defaults, wc_get_customer_default_location, WC_Geolocation::geolocate_ip, WC_Geolocation::get_external_ip_address, get_transient, delete_option
+[29-Oct-2020 00:22:27 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_timeout_external_ip_address_127.0.0.1' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, require('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, WooCommerce->init, wc_load_cart, WooCommerce->initialize_cart, WC_Customer->__construct, WC_Data_Store->read, WC_Customer_Data_Store_Session->read, WC_Customer_Data_Store_Session->set_defaults, wc_get_customer_default_location, WC_Geolocation::geolocate_ip, WC_Geolocation::get_external_ip_address, get_transient, delete_option
+[29-Oct-2020 00:22:27 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_timeout_external_ip_address_127.0.0.1' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, require('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, WooCommerce->init, wc_load_cart, WooCommerce->initialize_cart, WC_Customer->__construct, WC_Data_Store->read, WC_Customer_Data_Store_Session->read, WC_Customer_Data_Store_Session->set_defaults, wc_get_customer_default_location, WC_Geolocation::geolocate_ip, WC_Geolocation::get_external_ip_address, get_transient, delete_option
+[29-Oct-2020 00:23:08 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_timeout_wc_onboarding_product_data' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, WP_CLI::do_hook, WC_CLI_Runner::after_wp_load, do_action('rest_api_init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\API\Init->rest_api_init, Automattic\WooCommerce\Admin\API\OnboardingProfile->register_routes, Automattic\WooCommerce\Admin\API\OnboardingProfile->get_collection_params, Automattic\WooCommerce\Admin\API\OnboardingProfile::get_profile_properties, Automattic\WooCommerce\Admin\Features\Onboarding::get_allowed_product_types, Automattic\WooCommerce\Admin\Features\Onboarding::append_product_data, get_transient, delete_option
+[29-Oct-2020 00:23:08 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query DELETE FROM `wp_options` WHERE `option_name` = '_transient_timeout_wc_onboarding_product_data' made by include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/php/boot-phar.php'), include('phar://C:/Program Files (x86)/Local/resources/extraResources/bin/wp-cli/wp-cli.phar/vendor/wp-cli/wp-cli/php/wp-cli.php'), WP_CLI\bootstrap, WP_CLI\Bootstrap\LaunchRunner->process, WP_CLI\Runner->start, WP_CLI\Runner->load_wordpress, WP_CLI::do_hook, WC_CLI_Runner::after_wp_load, do_action('rest_api_init'), WP_Hook->do_action, WP_Hook->apply_filters, Automattic\WooCommerce\Admin\API\Init->rest_api_init, Automattic\WooCommerce\Admin\API\OnboardingProfile->register_routes, Automattic\WooCommerce\Admin\API\OnboardingProfile->get_collection_params, Automattic\WooCommerce\Admin\API\OnboardingProfile::get_profile_properties, Automattic\WooCommerce\Admin\Features\Onboarding::get_allowed_product_types, Automattic\WooCommerce\Admin\Features\Onboarding::append_product_data, get_transient, delete_option
